@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 2: AI Applications & Ethics</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Module 2: AI Applications & Ethics</h1>
+            <p class="subtitle">AI Applications & Ethics for the Engineering Secretariat</p>
+        </header>
+
+        <div class="module-goal">
+            <h2>Module Goal</h2>
+            <p>To identify specific, high-impact applications of AI for secretariat operations and to establish a foundational understanding of the ethical, privacy, and governance considerations for its responsible use.</p>
+        </div>
+
+        <!-- Part 1: Recap & Introduction -->
+        <section class="part" id="part1">
+            <h2>Part 1: Recap & Introduction (10 minutes)</h2>
+            <div class="intro-quote">
+                <p>"Welcome back. In Module 1, we demystified what AI is. We learned that it's about pattern recognition and that <strong>Generative AI</strong> can create new content. Today, we answer the two most important questions: '<strong>What can it do for us?</strong>' and '<strong>How do we use it responsibly?</strong>'</p>
+            </div>
+
+            <div class="content-box">
+                <h3>Quick Recap</h3>
+                <p>Use a slide with the AI family tree (AI > ML > Deep Learning > Generative AI) to refresh memories.</p>
+                <div class="ai-tree">
+                    <div class="tree-item">AI</div>
+                    <div class="tree-arrow">↓</div>
+                    <div class="tree-item">Machine Learning</div>
+                    <div class="tree-arrow">↓</div>
+                    <div class="tree-item">Deep Learning</div>
+                    <div class="tree-arrow">↓</div>
+                    <div class="tree-item">Generative AI</div>
+                </div>
+            </div>
+
+            <div class="content-box">
+                <h3>Learning Objectives</h3>
+                <p>The participants will gain:</p>
+                <ol>
+                    <li>Identify at least 5 ways AI can automate and enhance your daily tasks.</li>
+                    <li>Understand the core ethical risks of AI, including bias, privacy, and hallucination.</li>
+                    <li>Develop a framework for assessing the responsible use of any AI tool.</li>
+                </ol>
+            </div>
+
+            <!-- Quiz 1 -->
+            <div class="quiz-section">
+                <h3>Check Your Understanding - Part 1</h3>
+                <form class="quiz-form" id="quiz1">
+                    <div class="question">
+                        <p><strong>1. What is the relationship between AI, Machine Learning, Deep Learning, and Generative AI?</strong></p>
+                        <label><input type="radio" name="q1" value="a"> They are completely separate technologies</label>
+                        <label><input type="radio" name="q1" value="b"> Generative AI is a subset of Deep Learning, which is a subset of Machine Learning, which is a subset of AI</label>
+                        <label><input type="radio" name="q1" value="c"> They are all the same thing</label>
+                    </div>
+                    <div class="question">
+                        <p><strong>2. What are the two main questions this module addresses?</strong></p>
+                        <label><input type="radio" name="q2" value="a"> What is AI and how does it work?</label>
+                        <label><input type="radio" name="q2" value="b"> What can AI do for us and how do we use it responsibly?</label>
+                        <label><input type="radio" name="q2" value="c"> How much does AI cost and where can we buy it?</label>
+                    </div>
+                    <button type="button" class="submit-btn" onclick="checkQuiz('quiz1', ['b', 'b'])">Submit Answers</button>
+                </form>
+                <div class="quiz-result" id="quiz1-result"></div>
+            </div>
+        </section>
+
+        <!-- Part 2: AI Applications -->
+        <section class="part" id="part2">
+            <h2>Part 2: AI Applications in Secretariat Operations (60 minutes)</h2>
+            <div class="intro-quote">
+                <p>"Let's translate AI's capabilities into tangible benefits for our secretariat. We'll group these into three core areas: Communication, Information Management, and Strategic Support."</p>
+            </div>
+
+            <!-- Section A -->
+            <div class="subsection">
+                <h3>A. Revolutionizing Communication & Document Creation (20 mins)</h3>
+                
+                <div class="content-box">
+                    <h4>Drafting & Polishing</h4>
+                    <p><strong>Demo:</strong> Use ChatGPT or Copilot to: "Write a formal letter to the Ministry of Transport and Infrastructural Development, inviting the Permanent Secretary to be the keynote speaker at our Annual Engineering Conference. The theme is 'Sustainable Infrastructure for Zimbabwe's Future.' Keep the tone professional and enthusiastic."</p>
+                    <div class="discussion-box">
+                        <p><strong>Discussion:</strong> How much time would this save you? How could you then personalize the draft?</p>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <h4>Summarization</h4>
+                    <p><strong>Demo:</strong> Paste a long, complex article about a new engineering standard. Ask the AI: "Summarize this article in 3 bullet points for a busy engineer."</p>
+                    <p><strong>Application:</strong> Summarizing long meeting minutes, research papers, or member queries.</p>
+                </div>
+
+                <div class="content-box">
+                    <h4>Translation</h4>
+                    <p><strong>Demo:</strong> Quickly translate a sentence of the drafted letter into Shona or Ndebele, emphasizing this can break down communication barriers with a wider membership.</p>
+                </div>
+            </div>
+
+            <!-- Section B -->
+            <div class="subsection">
+                <h3>B. Enhancing Information & Meeting Management (20 mins)</h3>
+                
+                <div class="content-box">
+                    <h4>Data Analysis & Insight</h4>
+                    <p><strong>Concept Demo:</strong> Show a table of hypothetical membership data (Join Date, Discipline, Renewal Status). Ask the AI: "Identify any trends in this membership data. Which discipline has the highest renewal rate?"</p>
+                    <p><strong>Application:</strong> Analyzing event attendance, membership surveys, and financial contributions.</p>
+                </div>
+
+                <div class="content-box">
+                    <h4>Meeting Management</h4>
+                    <p><strong>Demo:</strong> Generate a detailed agenda for a 2-hour Zimbabwe Institution of Engineers Secretariat Staff Meeting, covering: Q1 financial report review, upcoming conference planning, and member engagement strategy.</p>
+                    <p><strong>Application:</strong> Automating the creation of agendas, minutes (from audio transcription), and action item trackers.</p>
+                </div>
+            </div>
+
+            <!-- Section C -->
+            <div class="subsection">
+                <h3>C. Strategic & Member Support (20 mins)</h3>
+                
+                <div class="content-box">
+                    <h4>Brainstorming & Ideation</h4>
+                    <p><strong>Interactive Activity:</strong> Let's ask the AI for help. Our challenge: "Generate 10 innovative ideas for increasing student member engagement in the Zimbabwe Institution of Engineers."</p>
+                    <p><strong>Discussion:</strong> Use the AI's output as a starting point for a team brainstorming session.</p>
+                </div>
+
+                <div class="content-box">
+                    <h4>Research & Briefing</h4>
+                    <p><strong>Demo:</strong> Act as a research assistant. Provide me with a brief overview of the latest global trends in 'green concrete' technology, citing key developments.</p>
+                    <p class="warning"><strong>CRUCIAL CAVEAT:</strong> Immediately follow this with a warning: "This is a great starting point, but we must verify this information with authoritative sources. AI can sometimes invent facts, a phenomenon called 'hallucination,' which we will discuss in the ethics section."</p>
+                </div>
+            </div>
+
+            <!-- Quiz 2 -->
+            <div class="quiz-section">
+                <h3>Check Your Understanding - Part 2</h3>
+                <form class="quiz-form" id="quiz2">
+                    <div class="question">
+                        <p><strong>1. Which of the following is NOT a core area of AI applications discussed?</strong></p>
+                        <label><input type="radio" name="q3" value="a"> Communication</label>
+                        <label><input type="radio" name="q3" value="b"> Information Management</label>
+                        <label><input type="radio" name="q3" value="c"> Financial Planning</label>
+                        <label><input type="radio" name="q3" value="d"> Strategic Support</label>
+                    </div>
+                    <div class="question">
+                        <p><strong>2. What is the phenomenon where AI can invent facts called?</strong></p>
+                        <label><input type="radio" name="q4" value="a"> Bias</label>
+                        <label><input type="radio" name="q4" value="b"> Hallucination</label>
+                        <label><input type="radio" name="q4" value="c"> Privacy breach</label>
+                        <label><input type="radio" name="q4" value="d"> Transparency issue</label>
+                    </div>
+                    <div class="question">
+                        <p><strong>3. What should you always do with AI-generated research information?</strong></p>
+                        <label><input type="radio" name="q5" value="a"> Use it directly without checking</label>
+                        <label><input type="radio" name="q5" value="b"> Verify it with authoritative sources</label>
+                        <label><input type="radio" name="q5" value="c"> Only use it for personal notes</label>
+                    </div>
+                    <button type="button" class="submit-btn" onclick="checkQuiz('quiz2', ['c', 'b', 'b'])">Submit Answers</button>
+                </form>
+                <div class="quiz-result" id="quiz2-result"></div>
+            </div>
+        </section>
+
+        <!-- Part 3: Ethics -->
+        <section class="part" id="part3">
+            <h2>Part 3: The Essential Ethical & Risk Framework (50 minutes)</h2>
+            <p class="intro-text">This section grounds the excitement from Part 2 in responsible practice.</p>
+
+            <div class="content-box">
+                <h3>Introduction to AI Ethics: "With Great Power..."</h3>
+                <p class="quote">"As a prestigious institution, how we adopt technology reflects on our values. Using AI responsibly is non-negotiable."</p>
+            </div>
+
+            <div class="content-box">
+                <h3>The Four Key Risks & Mitigations</h3>
+
+                <div class="risk-item">
+                    <h4>1. Bias & Fairness</h4>
+                    <p><strong>Risk:</strong> AI models trained on biased data can produce biased outputs. <em>Example:</em> An AI screening CVs might inadvertently disadvantage certain groups if its training data reflects historical biases.</p>
+                    <p><strong>Mitigation:</strong> Always apply human judgment. The AI is a tool, not the final decision-maker. Question its outputs. "Does this recommendation seem fair?"</p>
+                </div>
+
+                <div class="risk-item">
+                    <h4>2. Privacy & Data Security</h4>
+                    <p><strong>Risk:</strong> Inputting confidential, sensitive, or personal data into public AI tools.</p>
+                    <p><strong>Golden Rule:</strong> <strong>Never input confidential information.</strong> Do not paste member personal details, private financial data, or sensitive strategic documents into a public AI chat.</p>
+                    <p><strong>Mitigation:</strong> Use enterprise-grade AI tools (like Copilot for Microsoft 365) that have data protection agreements. Treat the AI chat like a public forum.</p>
+                </div>
+
+                <div class="risk-item">
+                    <h4>3. Hallucination & Accuracy</h4>
+                    <p><strong>Risk:</strong> Generative AI can generate plausible-sounding but incorrect or entirely fabricated information.</p>
+                    <p><strong>Mitigation:</strong> <strong>Trust, but Verify.</strong> Use AI for drafting and ideation, not as a source of truth. Always fact-check critical information, names, dates, and technical details against reliable sources.</p>
+                </div>
+
+                <div class="risk-item">
+                    <h4>4. Transparency & Accountability</h4>
+                    <p><strong>Risk:</strong> Over-reliance leading to a loss of personal expertise and critical thinking.</p>
+                    <p><strong>Mitigation:</strong> <strong>You are the expert.</strong> The AI is your assistant. You are ultimately accountable for the work you produce. Use AI to enhance your work, not to replace your own professional judgment.</p>
+                </div>
+            </div>
+
+            <div class="content-box">
+                <h3>Interactive Activity: "The Ethical Dilemma"</h3>
+                <p><strong>Instructions:</strong> Consider the following scenarios and think about the ethical implications.</p>
+                
+                <div class="scenario-box">
+                    <h4>Scenario 1</h4>
+                    <p>You use an AI to analyze membership survey comments. It produces a report stating that most negative feedback comes from members in a specific region. Is it ethical to present this finding to council without further investigation?</p>
+                    <div class="scenario-answer">
+                        <textarea placeholder="Type your thoughts here..."></textarea>
+                    </div>
+                </div>
+
+                <div class="scenario-box">
+                    <h4>Scenario 2</h4>
+                    <p>A council member asks you to draft a sensitive email regarding a disciplinary issue. To save time, you consider using an AI to draft it. What is the responsible course of action?</p>
+                    <div class="scenario-answer">
+                        <textarea placeholder="Type your thoughts here..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz 3 -->
+            <div class="quiz-section">
+                <h3>Check Your Understanding - Part 3</h3>
+                <form class="quiz-form" id="quiz3">
+                    <div class="question">
+                        <p><strong>1. What is the Golden Rule regarding privacy and data security?</strong></p>
+                        <label><input type="radio" name="q6" value="a"> Always use the latest AI tools</label>
+                        <label><input type="radio" name="q6" value="b"> Never input confidential information</label>
+                        <label><input type="radio" name="q6" value="c"> Trust AI completely with all data</label>
+                    </div>
+                    <div class="question">
+                        <p><strong>2. What should you do when AI produces a recommendation?</strong></p>
+                        <label><input type="radio" name="q7" value="a"> Accept it without question</label>
+                        <label><input type="radio" name="q7" value="b"> Always apply human judgment and question it</label>
+                        <label><input type="radio" name="q7" value="c"> Use it only for personal tasks</label>
+                    </div>
+                    <div class="question">
+                        <p><strong>3. What is the key principle regarding AI and accountability?</strong></p>
+                        <label><input type="radio" name="q8" value="a"> The AI is responsible for all outputs</label>
+                        <label><input type="radio" name="q8" value="b"> You are the expert and ultimately accountable</label>
+                        <label><input type="radio" name="q8" value="c"> Accountability doesn't matter with AI</label>
+                    </div>
+                    <div class="question">
+                        <p><strong>4. Which of the following is a mitigation for hallucination?</strong></p>
+                        <label><input type="radio" name="q9" value="a"> Use AI as the source of truth</label>
+                        <label><input type="radio" name="q9" value="b"> Trust, but Verify - always fact-check</label>
+                        <label><input type="radio" name="q9" value="c"> Never use AI for research</label>
+                    </div>
+                    <button type="button" class="submit-btn" onclick="checkQuiz('quiz3', ['b', 'b', 'b', 'b'])">Submit Answers</button>
+                </form>
+                <div class="quiz-result" id="quiz3-result"></div>
+            </div>
+        </section>
+
+        <!-- Part 4: Synthesis -->
+        <section class="part" id="part4">
+            <h2>Part 4: Synthesis & Action Plan (10 minutes)</h2>
+
+            <div class="content-box">
+                <h3>Recap of Key Takeaways</h3>
+                <div class="takeaways">
+                    <div class="takeaway-item">
+                        <h4>Applications</h4>
+                        <p>AI is a powerful tool for:</p>
+                        <ul>
+                            <li>Automating drafts</li>
+                            <li>Summarizing info</li>
+                            <li>Managing meetings</li>
+                            <li>Brainstorming</li>
+                        </ul>
+                    </div>
+                    <div class="takeaway-item">
+                        <h4>Ethics</h4>
+                        <p>Guiding principles:</p>
+                        <ul>
+                            <li><strong>Confidentiality</strong> (no private data)</li>
+                            <li><strong>Accuracy</strong> (always verify)</li>
+                            <li><strong>Fairness</strong> (watch for bias)</li>
+                            <li><strong>Accountability</strong> (you are in charge)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-box">
+                <h3>Personal Action Plan</h3>
+                <p>Complete your personal action plan:</p>
+                <form class="action-plan-form">
+                    <div class="form-group">
+                        <label for="application">One AI application I will try this week is:</label>
+                        <textarea id="application" placeholder="Describe the AI application you plan to try..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="principle">One ethical principle I will always remember is:</label>
+                        <textarea id="principle" placeholder="Describe the ethical principle you will remember..."></textarea>
+                    </div>
+                    <button type="button" class="submit-btn" onclick="saveActionPlan()">Save Action Plan</button>
+                </form>
+                <div class="action-plan-result" id="action-plan-result"></div>
+            </div>
+
+            <div class="content-box">
+                <h3>Look Ahead</h3>
+                <p>In our next module on Prompt Engineering, we will learn the <strong>skill</strong> of how to talk to AI effectively to get the high-quality outputs we just saw in our demos.</p>
+            </div>
+        </section>
+
+        <!-- Final Assessment -->
+        <section class="part" id="final-assessment">
+            <h2>Final Module Assessment</h2>
+            <div class="quiz-section">
+                <form class="quiz-form" id="final-quiz">
+                    <div class="question">
+                        <p><strong>1. Which of the following is an appropriate use of AI for secretariat operations?</strong></p>
+                        <label><input type="radio" name="fq1" value="a"> Drafting a formal letter to a ministry</label>
+                        <label><input type="radio" name="fq1" value="b"> Inputting confidential member financial data</label>
+                        <label><input type="radio" name="fq1" value="c"> Using AI output as final truth without verification</label>
+                    </div>
+                    <div class="question">
+                        <p><strong>2. What should you do if AI identifies a trend in membership data?</strong></p>
+                        <label><input type="radio" name="fq2" value="a"> Present it immediately to council</label>
+                        <label><input type="radio" name="fq2" value="b"> Apply human judgment and investigate further</label>
+                        <label><input type="radio" name="fq2" value="c"> Ignore it completely</label>
+                    </div>
+                    <div class="question">
+                        <p><strong>3. What are the four key ethical risks discussed in this module? (Select all that apply)</strong></p>
+                        <label><input type="checkbox" name="fq3" value="bias"> Bias & Fairness</label>
+                        <label><input type="checkbox" name="fq3" value="privacy"> Privacy & Data Security</label>
+                        <label><input type="checkbox" name="fq3" value="hallucination"> Hallucination & Accuracy</label>
+                        <label><input type="checkbox" name="fq3" value="transparency"> Transparency & Accountability</label>
+                        <label><input type="checkbox" name="fq3" value="cost"> Cost & Budget</label>
+                    </div>
+                    <div class="question">
+                        <p><strong>4. True or False: AI can be used as a replacement for your professional judgment.</strong></p>
+                        <label><input type="radio" name="fq4" value="true"> True</label>
+                        <label><input type="radio" name="fq4" value="false"> False</label>
+                    </div>
+                    <div class="question">
+                        <p><strong>5. Which tool is recommended for enterprise use with data protection?</strong></p>
+                        <label><input type="radio" name="fq5" value="a"> Any free AI tool</label>
+                        <label><input type="radio" name="fq5" value="b"> Copilot for Microsoft 365</label>
+                        <label><input type="radio" name="fq5" value="c"> Public ChatGPT without restrictions</label>
+                    </div>
+                    <button type="button" class="submit-btn" onclick="checkFinalQuiz()">Submit Final Assessment</button>
+                </form>
+                <div class="quiz-result" id="final-quiz-result"></div>
+            </div>
+        </section>
+
+        <footer>
+            <p>Module 2: AI Applications & Ethics | Zimbabwe Institution of Engineers</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
