@@ -11,6 +11,17 @@ const NOTIFICATION_CONFIG = {
         serviceId: 'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
         templateId: 'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
         publicKey: 'YOUR_PUBLIC_KEY' // Replace with your EmailJS public key
+    },
+    // Twilio WhatsApp setup
+    twilio: {
+        // Option 1: Use a backend webhook URL (recommended)
+        webhookUrl: 'YOUR_BACKEND_WEBHOOK_URL', // Your serverless function URL or backend endpoint
+        
+        // Option 2: Direct Twilio API (requires backend - not recommended for frontend)
+        // These should be stored securely on your backend, not in frontend code
+        accountSid: '', // Store on backend only
+        authToken: '', // Store on backend only
+        fromNumber: '' // Format: whatsapp:+14155238886
     }
 };
 
@@ -122,52 +133,69 @@ function formatAnswersHTML(quizData) {
     return html;
 }
 
-// Send WhatsApp message using webhook
+// Send WhatsApp message using Twilio (via backend webhook)
 async function sendWhatsApp(quizData) {
     const formattedMessage = formatQuizData(quizData);
+    const user = auth.getCurrentUser();
     
-    // Option 1: Using a webhook service (recommended)
-    // You can set up a free webhook using services like:
-    // - Zapier (zapier.com)
-    // - Make.com (make.com)
-    // - IFTTT (ifttt.com)
-    // - Or create your own backend endpoint
+    // Prepare data to send
+    const payload = {
+        to: NOTIFICATION_CONFIG.whatsapp,
+        message: formattedMessage,
+        quiz_data: {
+            quizName: quizData.quizName,
+            score: quizData.score,
+            total: quizData.total,
+            percentage: quizData.percentage,
+            isPassing: quizData.isPassing,
+            questions: quizData.questions,
+            feedback: quizData.feedback
+        },
+        student: {
+            name: user ? user.name : 'Unknown',
+            email: user ? user.email : 'Unknown'
+        },
+        timestamp: new Date().toISOString()
+    };
     
-    // Option 2: Using Twilio WhatsApp API (requires account setup)
-    // Option 3: Using WhatsApp Business API (requires business verification)
+    // Check if webhook URL is configured
+    const webhookUrl = NOTIFICATION_CONFIG.twilio.webhookUrl;
     
-    // For now, we'll use a simple approach with a webhook URL
-    // You'll need to set up a webhook that forwards to WhatsApp
+    if (!webhookUrl || webhookUrl === 'YOUR_BACKEND_WEBHOOK_URL') {
+        console.warn('Twilio webhook not configured. Please set up your backend webhook URL in notifications.js');
+        console.log('Message that would be sent:', formattedMessage);
+        // Try alternative method
+        return sendWhatsAppAlternative(formattedMessage);
+    }
     
     try {
-        // Example: Using a webhook service
-        // Replace YOUR_WEBHOOK_URL with your actual webhook URL
-        const webhookUrl = 'YOUR_WEBHOOK_URL'; // Set this up with a service like Zapier
-        
-        if (webhookUrl === 'YOUR_WEBHOOK_URL') {
-            console.log('WhatsApp webhook not configured. Message:', formattedMessage);
-            // Fallback: Try to send via email-to-WhatsApp if available
-            return sendWhatsAppViaEmail(formattedMessage);
-        }
-        
         const response = await fetch(webhookUrl, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({
-                phone: NOTIFICATION_CONFIG.whatsapp,
-                message: formattedMessage,
-                quiz_data: quizData
-            })
+            body: JSON.stringify(payload)
         });
         
-        return response.ok;
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const result = await response.json();
+        return result.success === true;
     } catch (error) {
         console.error('WhatsApp sending error:', error);
         // Fallback method
-        return sendWhatsAppViaEmail(formattedMessage);
+        return sendWhatsAppAlternative(formattedMessage);
     }
+}
+
+// Alternative method: Try using Zapier/Make webhook
+async function sendWhatsAppAlternative(message) {
+    // If you're using Zapier or Make.com, you can set up a webhook there
+    // and use it as a fallback
+    console.log('WhatsApp message (alternative method):', message);
+    return Promise.resolve(false);
 }
 
 // Fallback: Send WhatsApp via email (if your email provider supports it)
