@@ -4,6 +4,7 @@ This website contains all the content and interactive questionnaires for Module 
 
 ## Features
 
+- **User Authentication**: Login and registration system to secure access to the module
 - **Complete Module Content**: All four parts of the module with detailed notes and examples
 - **Interactive Quizzes**: Multiple choice questions throughout each section
 - **Ethical Dilemma Scenarios**: Interactive scenarios for students to reflect on
@@ -13,12 +14,25 @@ This website contains all the content and interactive questionnaires for Module 
 
 ## How to Use
 
-1. **Open the Website**: Simply open `index.html` in any modern web browser (Chrome, Firefox, Safari, Edge)
+1. **Access the Website**: Visit the website URL (or open `login.html` locally)
+   
+2. **Create an Account**:
+   - Click on the "Register" tab
+   - Enter your full name, email address, and password (minimum 6 characters)
+   - Confirm your password
+   - Click "Create Account"
+   - You'll be redirected to the login page
 
-2. **Navigate Through Content**: 
+3. **Login**:
+   - Enter your email and password
+   - Click "Login" to access the module content
+   - If you're not logged in, you'll be automatically redirected to the login page
+
+4. **Navigate Through Content**: 
    - Scroll through each part of the module
    - Read all the content and notes
    - Complete the quizzes as you go
+   - Use the "Logout" button in the header to sign out
 
 3. **Complete Quizzes**:
    - Each part has a "Check Your Understanding" quiz
@@ -44,9 +58,11 @@ This website contains all the content and interactive questionnaires for Module 
 
 ```
 ai-module-website/
-├── index.html      # Main HTML file with all content
+├── index.html      # Main HTML file with all content (requires login)
+├── login.html      # Login and registration page
 ├── styles.css      # Styling and design
-├── script.js       # Interactive functionality
+├── script.js       # Interactive functionality and authentication checks
+├── auth.js         # Authentication module (login, register, logout)
 └── README.md       # This file
 ```
 
@@ -80,10 +96,12 @@ ai-module-website/
 ## Technical Details
 
 - **No Server Required**: This is a static website that runs entirely in the browser
-- **Local Storage**: Action plans are saved in the browser's local storage
+- **Client-Side Authentication**: User accounts and sessions are stored in browser's local storage
+- **Local Storage**: User accounts, action plans, and session data are saved in the browser's local storage
+- **Password Security**: Passwords are hashed before storage (note: for production use, implement proper server-side authentication)
 - **Responsive Design**: Works on desktop, tablet, and mobile devices
 - **Modern CSS**: Uses gradients, animations, and smooth transitions
-- **JavaScript**: Handles quiz scoring, form validation, and local storage
+- **JavaScript**: Handles quiz scoring, form validation, authentication, and local storage
 
 ## Browser Compatibility
 
