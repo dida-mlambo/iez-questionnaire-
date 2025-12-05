@@ -59,6 +59,14 @@ function sendEmail(quizData) {
         return Promise.reject('EmailJS not loaded');
     }
     
+    // Check if configuration is set up
+    if (NOTIFICATION_CONFIG.emailjs.serviceId === 'YOUR_SERVICE_ID' || 
+        NOTIFICATION_CONFIG.emailjs.templateId === 'YOUR_TEMPLATE_ID' ||
+        NOTIFICATION_CONFIG.emailjs.publicKey === 'YOUR_PUBLIC_KEY') {
+        console.warn('EmailJS not configured. Please set up your Service ID, Template ID, and Public Key in notifications.js');
+        return Promise.reject('EmailJS not configured');
+    }
+    
     const formattedMessage = formatQuizData(quizData);
     const user = auth.getCurrentUser();
     
@@ -84,7 +92,16 @@ function sendEmail(quizData) {
         NOTIFICATION_CONFIG.emailjs.templateId,
         templateParams,
         NOTIFICATION_CONFIG.emailjs.publicKey
-    );
+    ).catch(error => {
+        // Handle specific Gmail API errors
+        if (error.text && error.text.includes('insufficient authentication scopes')) {
+            console.error('Gmail API Error: Insufficient authentication scopes.');
+            console.error('Solution: Use SMTP instead of OAuth, or re-authenticate with proper permissions.');
+            console.error('See GMAIL_FIX.md for detailed instructions.');
+            throw new Error('Gmail authentication error. Please check GMAIL_FIX.md for solutions.');
+        }
+        throw error;
+    });
 }
 
 // Format answers as HTML for email
